@@ -30,4 +30,15 @@ public class Professor extends Person {
         else
             throw new IllegalArgumentException(newCourseCode + " is not a valid course code");
     }
+
+    public ArrayList<String> getTeachables() {
+        return teachables;
+    }
+
+    /**
+     * This method will return true if the Professor has the argument (course  code) in their teachable list
+     */
+    public boolean canTeach(String courseCode){
+        return teachables.contains(courseCode);
+    }
 }
