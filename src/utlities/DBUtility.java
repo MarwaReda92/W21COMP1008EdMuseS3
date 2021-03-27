@@ -15,4 +15,8 @@ public class DBUtility {
                 "COMP 1098","COMP 2003","ENTR 1002","COMP 1009",
                 "COMP 1011","COMP 1073","COMP 2084","COMP 3002","COMP 2068");
     }
+
+    public static List<String> getAvailableCRNs(){
+        return Arrays.asList();
+    }
 }
