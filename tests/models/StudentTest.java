@@ -40,9 +40,22 @@ class StudentTest {
 
     @Test
     void getNumCoursesPassed() {
+        student.addGrade("21106",99);
+        student.addGrade("29823",73);
+        student.addGrade("28332",49);
+        assertEquals(2, student.getNumCoursesPassed());
+    }
+
+    @Test
+    void getNumCoursesPassedNoCourses() {
+        assertEquals(0, student.getNumCoursesPassed());
     }
 
     @Test
     void getAvgGrade() {
+        student.addGrade("21106",99);
+        student.addGrade("29823",73);
+        student.addGrade("28332",49);
+        assertEquals(73.67, student.getAvgGrade(), 0.01); //specifies what degree of accuracy we want  with the 0.01
     }
 }
