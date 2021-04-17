@@ -39,14 +39,15 @@ public class CreateStudentViewController implements Initializable {
             Student newStudent = new Student(firstNameTextField.getText(), lastNameTextField.getText(), addressTextField.getText(), birthdayDatePicker.getValue());
 
             //1. insert the student into the db
-            DBUtility.insertNewStudent(newStudent);
+            int studentNum = DBUtility.insertNewStudent(newStudent);
 
             //2. clear the fields
             //3. display the new student object
+            errMSGLabel.setText("Student Num: " + studentNum + " "+ newStudent.toString());
         }catch (IllegalArgumentException e) {
             errMSGLabel.setText(e.getMessage()); //this will get the error msg and display it to the user
         }catch (Exception e){
-            errMSGLabel.setText("Check all fields for values");
+            e.printStackTrace();
         }
     }
 }

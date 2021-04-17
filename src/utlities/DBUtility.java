@@ -113,15 +113,18 @@ public class DBUtility {
         return courses;
     }
 
-    public static int insertNewStudent(Student student){
+    public static int insertNewStudent(Student student) throws SQLException {
 
         int studentNum = -1;
         String sql = "INSERT INTO students (firstName, lastName, address, birthday) VALUES (?,?,?,?)";
+        PreparedStatement preparedStatement = null;
+        ResultSet rs = null;
         try (
                 Connection conn = DriverManager.getConnection(connString, user, password);
-                PreparedStatement preparedStatement = conn.prepareStatement(sql, new String[]{"studentNum"});
                 )
         {
+            preparedStatement = conn.prepareStatement(sql, new String[]{"studentNum"});
+
             //bind the values
             preparedStatement.setString(1, student.getFirstName());
             preparedStatement.setString(2, student.getLastName());
@@ -132,13 +135,19 @@ public class DBUtility {
             preparedStatement.executeUpdate();
 
             //loop over the resultset and get the student number
-            ResultSet rs = preparedStatement.getGeneratedKeys();
+            rs = preparedStatement.getGeneratedKeys();
             while (rs.next())
                 studentNum = rs.getInt(1);
         }
         catch (SQLException e)
         {
             e.printStackTrace();
+        }
+        finally {
+            if (rs != null)
+                rs.close();
+            if (preparedStatement != null)
+                preparedStatement.close();
         }
         return studentNum;
     }
