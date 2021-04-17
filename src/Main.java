@@ -4,6 +4,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import models.Person;
+import models.Student;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import java.util.TreeMap;
 
 public class Main extends Application {
     public static void main(String[] args) {
+
         launch(args); //this is all thatsrequired in the main method
 //        Person p1 = new Person("Molly","Malone","1 Bedrock", LocalDate.of(1986,3,17));
 //        Person p2 = new Person("Molly","Malone","1 Bedrock", LocalDate.of(2020,3,27));
